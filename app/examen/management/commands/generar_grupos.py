@@ -33,18 +33,57 @@ class Command(BaseCommand):
                 
                 # Usuario
                 "add_usuario", "change_usuario", "delete_usuario", "view_usuario",
+                
+                # Investigador
+                "add_investigador", "change_investigador", "delete_investigador", "view_investigador",
+                
+                # Paciente
+                "add_paciente", "change_paciente", "delete_paciente", "view_paciente",
+                
+                # Farmaco
+                "add_farmaco", "change_farmaco", "delete_farmaco", "view_farmaco",
+                
+                # EnsayoClinico
+                "add_ensayoclinico", "change_ensayoclinico", "delete_ensayoclinico", "view_ensayoclinico",
+                
             ],
-            # ______________________ GRUPO TECNICO __________________________
-            "Tecnico": [
+            # ______________________ GRUPO INVESTIGADOR __________________________
+            "Investigador": [
                 
                 # Usuario
-                "change_usuario","view_usuario",
+                "add_usuario", "change_usuario", "delete_usuario", "view_usuario",
+                
+                # Investigador
+                "add_investigador", "change_investigador", "delete_investigador", "view_investigador",
+                
+                # Paciente
+                "add_paciente", "change_paciente", "delete_paciente", "view_paciente",
+                
+                # Farmaco
+                "add_farmaco", "change_farmaco", "delete_farmaco", "view_farmaco",
+                
+                # EnsayoClinico
+                "add_ensayoclinico", "change_ensayoclinico", "delete_ensayoclinico", "view_ensayoclinico",
+                
             ],
-            # ______________________ GRUPO USUARIO ________________________________
-            "Usuario": [
+            # ______________________ GRUPO PACIENTE ________________________________
+            "Paciente": [
                 
                 # Usuario
                 "view_usuario",
+                
+                # Investigador
+                "view_investigador",
+                
+                # Paciente
+                "view_paciente",
+                
+                # Farmaco
+                "view_farmaco",
+                
+                # EnsayoClinico
+                "view_ensayoclinico",
+                
             ],
         }
 

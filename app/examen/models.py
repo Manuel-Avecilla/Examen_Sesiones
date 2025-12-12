@@ -5,13 +5,13 @@ from django.contrib.auth.models import AbstractUser
 class Usuario(AbstractUser):
     
     ADMINISTRADOR = 1
-    TECNICO = 2
-    USUARIO = 3
+    INVESTIGADOR = 2
+    PACIENTE = 3
     
     ROLES = (
         (ADMINISTRADOR, 'Administrador'),
-        (TECNICO, 'Tecnico'),
-        (USUARIO, 'Usuario'),
+        (INVESTIGADOR, 'Investigador'),
+        (PACIENTE, 'Paciente'),
     )
     
     rol = models.PositiveSmallIntegerField(
@@ -21,16 +21,51 @@ class Usuario(AbstractUser):
     def __str__(self):
         return f"{self.username} ({self.get_rol_display()})"
 
-#------------------------------- TECNICO ------------------------------------------
-class Tecnico(models.Model):
+#------------------------------- INVESTIGADOR ------------------------------------------
+class Investigador(models.Model):
     # Relacion 1:1 con Usuario
-    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name='tecnico')
+    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name='investigador')
     
-    edad = models.PositiveIntegerField(blank=True, null=True)
-    puesto = models.CharField(max_length=50,blank=True, null=True)
+    puesto = models.CharField(max_length=50,blank=True, null=True, default='No Definido')
 
     def __str__(self):
-        return f"Tecnico: {self.usuario.username}"
+        return f"Investigador: {self.usuario.username}"
+
+#------------------------------- PACIENTE ------------------------------------------
+class Paciente(models.Model):
+    # Relacion 1:1 con Usuario
+    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name='paciente')
+    
+    edad = models.PositiveIntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Paciente: {self.usuario.username}"
+
+#------------------------------- FARMACO ------------------------------------------
+class Farmaco(models.Model): 
+    
+    nombre = models.CharField(max_length=100) 
+    apto_para_ensayos = models.BooleanField()
+    
+    def __str__(self): 
+        return self.nombre 
 
 
-
+#------------------------------- ENSAYO-CLINICO ------------------------------------------
+class EnsayoClinico(models.Model):
+    
+    nombre = models.CharField(max_length=100) 
+    descripcion = models.TextField()
+    # Relacion ManyToOne con Farmaco
+    farmaco = models.ForeignKey(Farmaco, on_delete=models.CASCADE)
+    # Relacion ManyToMany con Paciente
+    pacientes = models.ManyToManyField('Paciente') 
+    nivel_seguimiento = models.IntegerField() 
+    fecha_inicio = models.DateField() 
+    fecha_fin = models.DateField() 
+    activo = models.BooleanField(default=True)
+    # Relacion ManyToOne con Investigador
+    creado_por = models.ForeignKey('Investigador', on_delete=models.CASCADE)
+    
+    def __str__(self): 
+        return self.nombre

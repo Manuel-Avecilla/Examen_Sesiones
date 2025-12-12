@@ -1,18 +1,18 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-{% block title %}Examen - Tecnicos{% endblock %}
+{% block title %}Examen - Ensayo Clinico{% endblock %}
 
 
 {% block cabecera %}
-    <h1>Lista Tecnicos</h1>
+    <h1>Lista Ensayos Clinicos</h1>
     <hr>
     <br>
 {% endblock %}
 
 {% block contenido %}
     
-    {% if perms.examen.delete_tecnico %}
+    {% if perms.examen.delete_ensayoclinico %}
         {% include "base/modal/_modal_eliminar.html" %}
     {% endif %}
 
@@ -23,10 +23,10 @@
     {% endif %}
 
     <div class="d-flex flex-wrap align-content-center justify-content-center gap-4">
-        {% for Tecnico_Mostrar in Tecnicos_Mostrar %}
-            {% include "models/tecnico/_item_tecnico.html" %}
+        {% for EnsayoClinico_Mostrar in EnsayosClinicos_Mostrar %}
+            {% include "models/ensayoclinico/_item_ensayoclinico.html" %}
         {% empty %}
-            <h2>No se encontraron tecnicos</h2>
+            <h2>No se encontraron Ensayos Clinicos</h2>
         {% endfor %}
     </div>
 

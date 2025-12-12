@@ -16,13 +16,13 @@
     <h5>Menu Enlaces</h5>
     <br>
 
-    <p>(modelo) - CRUD</p>
+    <p>Ensayo Clinico - CRUD</p>
     <ul>
-        <li><a href="">(modelo) - CREATE</a></li>
-        <li><a href="">(modelo) - READ - Lista</a></li>
-        <li><a href="">(modelo) - READ - Filtro avanzado</a></li>
-        <li><a href="">(modelo) - UPDATE</a></li>
-        <li><a href="">(modelo) - DELETE</a></li>
+        <li><a href="{% url 'ensayoclinico_create' %}">Ensayo Clinico - CREATE</a></li>
+        <li><a href="{% url 'ensayosclinicos_listar' %}">Ensayo Clinico - READ - Lista</a></li>
+        <li><a href="{% url 'ensayoclinico_buscar_avanzado' %}">Ensayo Clinico - READ - Filtro avanzado</a></li>
+        <li><a href="{% url 'ensayosclinicos_listar' %}">Ensayo Clinico - UPDATE</a></li>
+        <li><a href="{% url 'ensayosclinicos_listar' %}">Ensayo Clinico - DELETE</a></li>
     </ul>
 
     <br>
@@ -31,7 +31,7 @@
     <p>URLs</p>
     <ul>
         <li><a href="{% url 'usuarios_listar' %}">Lista Usuarios</a></li>
-        <li><a href="{% url 'tecnicos_listar' %}">Lista Tecnicos</a></li>
+        <li><a href="{% url 'ensayosclinicos_listar' %}">Lista Ensayos Clinicos</a></li>
     </ul>
 
 
